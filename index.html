@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treino de Grávidas & Dindos! 👶💖</title>
+    <title>Quiz do Bebê Feliz! 👶💖</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="game-container">
-    <h1>🍼 Treino de Mamãe & Dindos 💕</h1>
-    <p>O bebê está sob os seus cuidados! Deixe-o feliz e preparado!</p>
+    <h1>🍼 Quiz da Mamãe & Dindos 💕</h1>
+    <p>Responda corretamente para manter o bebê feliz!</p>
 
     <div class="stats-board">
-        <div class="stat">Felicidade: <span id="happy-score">50</span>%</div>
-        <div class="stat">Nível: <span id="level">1</span> 🌟</div>
+        <div class="stat">Felicidade: <span id="happy-score">100</span>%</div>
+        <div class="stat">Pergunta: <span id="question-number">1</span>/10</div>
     </div>
 
     <div class="game-area">
-        <div class="baby-emoji" id="baby">👶</div>
-        <div class="status-text" id="status">O bebê está calminho! O que você vai fazer?</div>
+        <div class="baby-display">
+            <div class="baby-photo-frame">
+                <img src="baby_photo.jpg" alt="Foto de um bebê fofo" class="baby-photo" id="baby-img">
+            </div>
+        </div>
+        <div class="quiz-area">
+            <p class="question-text" id="question-text">Pergunta...</p>
+            <div class="options-grid" id="options-grid">
+                </div>
+        </div>
     </div>
 
-    <div class="actions-grid">
-        <button class="btn" id="btn-milk">🍼 Dar Mamadeira</button>
-        <button class="btn" id="btn-diaper">🧷 Trocar Fralda</button>
-        <button class="btn" id="btn-lullaby">🎶 Cantar Cantiga</button>
-        <button class="btn" id="btn-play">🧸 Fazer Cosquinha</button>
+    <div id="end-game-message" class="end-game-hidden">
+        <h2 id="final-status">Parabéns!</h2>
+        <button class="btn btn-reset" id="btn-reset">🔄 Jogar Novamente</button>
     </div>
-
-    <button class="btn btn-reset" id="btn-reset">🔄 Reiniciar Treino</button>
 </div>
 
 <script src="script.js"></script>
