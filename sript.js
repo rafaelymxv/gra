@@ -1,11 +1,6 @@
 let happiness = 50;
 let level = 1;
 
-const babyElement = document.getElementById('baby');
-const statusElement = document.getElementById('status');
-const happyScoreElement = document.getElementById('happy-score');
-const levelElement = document.getElementById('level');
-
 const actions = {
     milk: {
         text: "Nhac nhac! Mamadeira quentinha! 🍼",
@@ -29,40 +24,46 @@ const actions = {
     }
 };
 
-function careAction(actionType) {
-    if (happiness >= 100) return;
+document.addEventListener('DOMContentLoaded', () => {
+    const babyElement = document.getElementById('baby');
+    const statusElement = document.getElementById('status');
+    const happyScoreElement = document.getElementById('happy-score');
+    const levelElement = document.getElementById('level');
 
-    const action = actions[actionType];
-    happiness += action.points;
+    function careAction(actionType) {
+        if (happiness >= 100) return;
 
-    if (happiness > 100) happiness = 100;
+        const action = actions[actionType];
+        happiness += action.points;
 
-    babyElement.textContent = action.emoji;
-    statusElement.textContent = action.text;
-    happyScoreElement.textContent = happiness;
+        if (happiness > 100) happiness = 100;
 
-    checkLevel();
-}
+        babyElement.textContent = action.emoji;
+        statusElement.textContent = action.text;
+        happyScoreElement.textContent = happiness;
 
-function checkLevel() {
-    if (happiness >= 100) {
-        statusElement.textContent = "🎉 PARABÉNS! Você é um(a) super Mamãe/Dindo(a)!";
-        babyElement.textContent = "👶👑";
-        level++;
-        levelElement.textContent = level;
+        checkLevel();
     }
-}
 
-function resetGame() {
-    happiness = 50;
-    happyScoreElement.textContent = happiness;
-    babyElement.textContent = "👶";
-    statusElement.textContent = "O bebê está pronto para mais carinho!";
-}
+    function checkLevel() {
+        if (happiness >= 100) {
+            statusElement.textContent = "🎉 PARABÉNS! Você é um(a) super Mamãe/Dindo(a)!";
+            babyElement.textContent = "👶👑";
+            level++;
+            levelElement.textContent = level;
+        }
+    }
 
-// Configura os ouvintes de evento nos botões
-document.getElementById('btn-milk').addEventListener('click', () => careAction('milk'));
-document.getElementById('btn-diaper').addEventListener('click', () => careAction('diaper'));
-document.getElementById('btn-lullaby').addEventListener('click', () => careAction('lullaby'));
-document.getElementById('btn-play').addEventListener('click', () => careAction('play'));
-document.getElementById('btn-reset').addEventListener('click', resetGame);
+    function resetGame() {
+        happiness = 50;
+        happyScoreElement.textContent = happiness;
+        babyElement.textContent = "👶";
+        statusElement.textContent = "O bebê está pronto para mais carinho!";
+    }
+
+    document.getElementById('btn-milk').addEventListener('click', () => careAction('milk'));
+    document.getElementById('btn-diaper').addEventListener('click', () => careAction('diaper'));
+    document.getElementById('btn-lullaby').addEventListener('click', () => careAction('lullaby'));
+    document.getElementById('btn-play').addEventListener('click', () => careAction('play'));
+    document.getElementById('btn-reset').addEventListener('click', resetGame);
+});
